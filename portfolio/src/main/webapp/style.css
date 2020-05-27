@@ -1,9 +1,25 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: max-content;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+body {
+    background-color: palegoldenrod;
+}
+
+p {
+    color: red;
+}
+
+h1 {
+    color: blue;
+}
+
+h2 {
+    color: blue;
 }
