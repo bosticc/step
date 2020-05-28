@@ -1,6 +1,7 @@
 #content {
   margin-left: auto;
   margin-right: auto;
+  max-width: 100%;
   width: max-content;
 }
 
@@ -9,17 +10,19 @@
 }
 
 body {
-    background-color: palegoldenrod;
+  background-color: purple;
 }
 
 p {
-    color: red;
+  color: black;
 }
 
 h1 {
-    color: blue;
+  color: black;
 }
 
+
 h2 {
-    color: blue;
+  color: black;
 }
+
