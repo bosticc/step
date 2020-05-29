@@ -21,8 +21,25 @@ h1 {
   color: black;
 }
 
-
 h2 {
   color: black;
 }
 
+li a {
+display: block;
+color: #343;
+padding: 8px 16px;
+text-decoration: none;
+}
+
+li a:hover {
+background-color: yellow;
+color: purple;
+}
+
+ul {
+padding: 0;
+margin: 0;
+width: 200px;
+background-color:grey;
+}
