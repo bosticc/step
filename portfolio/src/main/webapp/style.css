@@ -1,7 +1,6 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 100%;
   width: max-content;
 }
 
@@ -10,7 +9,9 @@
 }
 
 body {
-  background-color: purple;
+  background-color: #cccccc;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 
 p {
@@ -23,13 +24,16 @@ h1 {
 
 h2 {
   color: black;
+  font-family:Helvetica;
 }
 
 li a {
 display: block;
-color: #343;
-padding: 8px 16px;
+color : purple ;
+padding: 4px 16px;
 text-decoration: none;
+position: relative;
+white-space:nowrap;
 }
 
 li a:hover {
@@ -41,5 +45,89 @@ ul {
 padding: 0;
 margin: 0;
 width: 200px;
-background-color:grey;
 }
+
+/* Layout for buttons */
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10%
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-github {
+  background: #c9510c;
+  color: white;
+}
+
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+body{
+    position: relative;
+}
+
+/* parallax images (all below) */
+.howard_image {
+  /* The image used */
+  background-image: url('Images/Howard.png');
+
+  /* Set a specific height */
+  min-height: 200px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-color:black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.akatsuki_parallax {
+  /* The image used */
+  background-image: url('Images/akatsuki.png');
+
+  /* Set a specific height */
+  min-height: 300px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:white;
+}
+
+.kobe_parallax {
+  /* The image used */
+  background-image: url('Images/kobenfam.jpg');
+
+  /* Set a specific height */
+  min-height: 300px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:white;
+}
+
+/* Layout inspired from w3schools! */
