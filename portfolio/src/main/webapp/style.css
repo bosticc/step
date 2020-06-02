@@ -135,6 +135,7 @@ body{
 .container-pt-3 {
     padding-top:70px;
     padding-left:20px;
+    padding-bottom:20px;
     background-color: white;
 }
 
