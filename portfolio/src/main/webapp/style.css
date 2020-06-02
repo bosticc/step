@@ -34,6 +34,8 @@ padding: 4px 16px;
 text-decoration: none;
 position: relative;
 white-space:nowrap;
+padding-left: 5px;
+padding-right:5px;
 }
 
 li a:hover {
@@ -53,10 +55,9 @@ width: 200px;
 .fa {
   padding: 20px;
   font-size: 30px;
-  width: 30px;
   text-align: center;
   text-decoration: none;
-  border-radius: 10%
+  border: none;
 }
 
 .fa:hover {
@@ -85,7 +86,7 @@ body{
 }
 
 /* parallax images (all below) */
-.howard_image {
+.howard-image {
   /* The image used */
   background-image: url('Images/Howard.png');
 
@@ -100,7 +101,7 @@ body{
   background-size: cover;
 }
 
-.akatsuki_parallax {
+.akatsuki-parallax {
   /* The image used */
   background-image: url('Images/akatsuki.png');
 
@@ -115,7 +116,7 @@ body{
   background-color:white;
 }
 
-.kobe_parallax {
+.kobe-parallax {
   /* The image used */
   background-image: url('Images/kobenfam.jpg');
 
@@ -128,6 +129,20 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-color:white;
+}
+
+/*styling for the top container*/
+.container-pt-3 {
+    padding-top:70px;
+    padding-left:20px;
+    background-color: white;
+}
+
+/*styling for all the containers except for the top one*/
+.container-fluid {
+    padding-bottom:70px;
+    padding-top:20px;
+    padding-left:20px;
 }
 
 /* Layout inspired from w3schools! */
