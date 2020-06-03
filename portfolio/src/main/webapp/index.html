@@ -43,8 +43,13 @@
     <h1>Welcome!</h1>
     <h2>Hi, my name is Myles, and I am currently a rising sophomore at
       <a href= "https://home.howard.edu/"> Howard University</a> in D.C.</h2>
-      <button onclick="getRandomQuoteUsingArrowFunctions()">Fetch a quote!</button>
-      <div id="quote-container"></div>
+      <form action="/text" method="POST">
+
+      <p>Enter a comma-separated list of words:</p>
+      <textarea name="text-input">one, two, three</textarea>
+      <br/><br/>
+      <input type="submit" />
+    </form>
   </div>
   <!-- Parallax effect with howard image, also seen after
       this div-->

@@ -15,6 +15,7 @@
 
 package com.google.sps.servlets;
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -24,29 +25,33 @@ import com.google.gson.Gson;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+@WebServlet("/text")
 public class DataServlet extends HttpServlet {
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "text-input", "");
 
+    // Break the text into individual words.
+    String[] words = text.split("\\s*,\\s*");
 
-private List<String> quotes;
+    // Sort the words.
+      Arrays.sort(words);
+    
 
-  @Override
-  public void init() {
-    quotes = new ArrayList<>();
-    quotes.add("myles");
-    quotes.add("ellis");
-    quotes.add("bostic");
+    // Respond with the result.
+    response.setContentType("text/html;");
+    response.getWriter().println(Arrays.toString(words));
   }
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("application/json;");
-    response.getWriter().println(convertToJsonUsingGson(quotes));
-  }
-
-  private String convertToJsonUsingGson(List<String> quotes) {
-    Gson gson = new Gson();
-    String json = gson.toJson(quotes);
-    return json;
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
