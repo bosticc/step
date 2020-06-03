@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 function getRandomQuoteUsingArrowFunctions() {
-  fetch('/data').then(response => response.text()).then((quote) => {
-    document.getElementById('quote-container').innerText = quote;
+  fetch('/data').then(response => response.json()).then((myObject) => {
+    document.getElementById('quote-container').innerText = myObject;
   });
 }
