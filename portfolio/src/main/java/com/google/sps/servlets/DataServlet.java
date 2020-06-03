@@ -14,6 +14,13 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -29,18 +36,16 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
-    String text = getParameter(request, "text-input", "");
-
-    // Break the text into individual words.
-    String[] words = text.split("\\s*,\\s*");
-
-    // Sort the words.
-      Arrays.sort(words);
     
+    String title = request.getParameter("text-input");
+    long timestamp = System.currentTimeMillis();
 
-    // Respond with the result.
-    response.setContentType("text/html;");
-    response.getWriter().println(Arrays.toString(words));
+    Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("title", title);
+    taskEntity.setProperty("timestamp", timestamp);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
   }
 
   /**
