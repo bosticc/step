@@ -11,8 +11,33 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-function getRandomQuoteUsingArrowFunctions() {
-  fetch('/data').then(response => response.json()).then((myObject) => {
-    document.getElementById('quote-container').innerText = myObject;
+function loadTasks() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const taskListElement = document.getElementById('task-list');
+    comments.forEach((comment) => {
+      taskListElement.appendChild(createTaskElement(comment));
+    })
   });
+}
+
+/** Creates an element that represents a task, including its delete button. */
+function createTaskElement(comment) {
+  const taskElement = document.createElement('li');
+  taskElement.className = 'comment';
+
+  const titleElement = document.createElement('span');
+  titleElement.innerText = comment.title;
+
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.addEventListener('click', () => {
+    deleteTask(comment);
+
+    // Remove the task from the DOM.
+    taskElement.remove();
+  });
+
+  taskElement.appendChild(titleElement);
+  taskElement.appendChild(deleteButtonElement);
+  return taskElement;
 }

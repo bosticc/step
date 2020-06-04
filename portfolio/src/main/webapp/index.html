@@ -20,7 +20,7 @@
 
 </head>
   <!-- Navbar -->
-  <body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="loadTasks()">
   <nav class="navbar navbar-expand-sm bg-dark 
       navbar-dark justify-content-center fixed-top">
   <ul class="navbar-nav">
@@ -43,13 +43,13 @@
     <h1>Welcome!</h1>
     <h2>Hi, my name is Myles, and I am currently a rising sophomore at
       <a href= "https://home.howard.edu/"> Howard University</a> in D.C.</h2>
-      <form action="/text" method="POST">
-
-      <p>Enter a comma-separated list of words:</p>
-      <textarea name="text-input">one, two, three</textarea>
-      <br/><br/>
-      <input type="submit" />
-    </form>
+      <form method="POST" action="/data">
+        <input type="text" name="title" />
+        <br/>
+        <button>Submit</button>
+      </form>
+    <hr/>
+    <ul id="task-list"></ul>
   </div>
   <!-- Parallax effect with howard image, also seen after
       this div-->
