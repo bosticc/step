@@ -16,11 +16,15 @@
   <script 
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYcMmCM_PDvd60l3ZCAlQmR-14jeg-xF4Y
+    &callback=initMap"type="text/javascript"></script>
   <script src="script.js"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
   <!-- Navbar -->
-  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="numComments(3)">
+  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="numComments(3)" >
   <nav class="navbar navbar-expand-sm bg-dark 
       navbar-dark justify-content-center fixed-top">
   <ul class="navbar-nav">
@@ -33,6 +37,9 @@
     </li>
     <li class="nav-item">
       <a href="#interests">Interests</a>
+    </li>
+    <li class="nav-item">
+      <a href="#chart-container">Take my poll!</a>
     </li>
   </ul>
   <span class="navbar-text"</span>
@@ -96,11 +103,12 @@
   </div>
   <div class="akatsuki-parallax"></div>
   <!-- !TODO add some stuff to this section -->
+  <div id="chart-container" class="container-fluid  bg-dark"></div>
   <div id="met-Myles" class="container-fluid  bg-dark">
   <!-- Made a section to survey if people have met me -->
     <h1>Participate in my survey</h1>
-    <form action="/my-Myles" method="POST">
-      <select name="Have you met me before?">
+    <form action="/met-Myles" method="POST">
+      <select name="metMyles">
         <option value="I have met Myles before!">Met Myles</option>
         <option value="I haven't met Myles yet, but I hope to!">I have not met Myles</option>
       </select>
@@ -120,3 +128,5 @@
 </html>
 
 <!-- Layout from w3schools!-->
+
+AIzaSyAYcMmCM_PDvd60l3ZCAlQmR-14jeg-xF4
