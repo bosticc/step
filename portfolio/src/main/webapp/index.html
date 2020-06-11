@@ -16,15 +16,14 @@
   <script 
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYcMmCM_PDvd60l3ZCAlQmR-14jeg-xF4Y
-    &callback=initMap"type="text/javascript"></script>
   <script src="script.js"></script>
+   <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3MIdHeG54jeXfemqIAzHy2rqmx7deubk&callback=initMap"type="text/javascript"></script>
 
   <link rel="stylesheet" href="style.css">
 </head>
   <!-- Navbar -->
-  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="numComments(3)" >
+  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="numComments(3)" onload="initMap()" >
   <nav class="navbar navbar-expand-sm bg-dark 
       navbar-dark justify-content-center fixed-top">
   <ul class="navbar-nav">
@@ -116,17 +115,10 @@
     </form>  
   </div>
   <!-- Kobe parallax -->
-  <div class="kobe-parallax">
-  </div>
+  <div class="kobe-parallax"></div>
   <!-- !TODO add some stuff to this section -->
-  <div id="section5" class="container-fluid">
-    <h1>I still don't know! I like the lakers
-        if u couldn't tell by now tho.. :)
-    </h1>
-  </div>
+  <div id="map"></div>
+  <p>This page shows a Google Map!</p>
   </body>
 </html>
-
 <!-- Layout from w3schools!-->
-
-AIzaSyAYcMmCM_PDvd60l3ZCAlQmR-14jeg-xF4

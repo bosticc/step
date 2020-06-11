@@ -23,6 +23,16 @@ google.charts.setOnLoadCallback(drawChart);
 // draws it.
 
 
+
+/** Creates a map and adds it to the page. */
+function initMap() {
+    const map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: {lat: 37.422, lng: -122.084}, zoom: 16}); 
+}
+
+
+/** Creates a chart and adds it to the page. */
 function drawChart() {
 
 // Create the data table for the pie chart.
@@ -109,4 +119,3 @@ function deleteTask(task) {
   params.append('id', task.id);
   fetch('/DataDelete', {method: 'POST', body: params});
 }
-
