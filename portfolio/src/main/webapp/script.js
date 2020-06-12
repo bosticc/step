@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Load the Visualization API and the corechart package.
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', { 'packages': ['corechart'] });
 
 // Set a callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(drawChart);
@@ -26,67 +26,68 @@ google.charts.setOnLoadCallback(drawChart);
 
 /** Creates a map and adds it to the page. */
 function initMap() {
-    const map = new google.maps.Map(
-      document.getElementById('map'),
-      {center: {lat: 37.422, lng: -122.084}, zoom: 16}); 
+  const map = new google.maps.Map(
+    document.getElementById('map'),
+    { center: { lat: 40.729980, lng: -74.271996 }, zoom: 16 });
 }
 
 
 /** Creates a chart and adds it to the page. */
 function drawChart() {
 
-// Create the data table for the pie chart.
-    var dataPie = new google.visualization.DataTable();
-    dataPie.addColumn('string', 'Topping');
-    dataPie.addColumn('number', 'Slices');
-    dataPie.addRows([
-        ['Pepperoni', 3],
-        ['Pineapple', 1],
-    ]);
+  // Create the data table for the pie chart.
+  var dataPie = new google.visualization.DataTable();
+  dataPie.addColumn('string', 'Topping');
+  dataPie.addColumn('number', 'Slices');
+  dataPie.addRows([
+    ['Pepperoni', 3],
+    ['Pineapple', 1],
+  ]);
 
-    // Set chart options (size & title)
-    var options = {'title':'How Much Pizza I Ate Last Night',
-                   'width':400,
-                   'height':300};
+  // Set chart options (size & title)
+  var options = {
+    'title': 'How Much Pizza I Ate Last Night',
+    'width': 400,
+    'height': 300
+  };
 
-    // Instantiate and draw our chart, passing in some options.
-    var foodChart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    foodChart.draw(dataPie, options);
+  // Instantiate and draw our chart, passing in some options.
+  var foodChart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  foodChart.draw(dataPie, options);
 
-    const dataMyles = new google.visualization.DataTable();
-    //fetch data from servlet for bar chart 
-    fetch('/met-Myles').then(response => response.json())
+  const dataMyles = new google.visualization.DataTable();
+  //fetch data from servlet for bar chart 
+  fetch('/met-Myles').then(response => response.json())
     .then((metVotes) => {
-    dataMyles.addColumn('string', 'option');
-    dataMyles.addColumn('number', 'Votes');
-    Object.keys(metVotes).forEach((metMyles) => {
-      dataMyles.addRow([metMyles, metVotes[metMyles]]);
-    });
+      dataMyles.addColumn('string', 'option');
+      dataMyles.addColumn('number', 'Votes');
+      Object.keys(metVotes).forEach((metMyles) => {
+        dataMyles.addRow([metMyles, metVotes[metMyles]]);
+      });
 
-    //for the size of the chart
-    const options = {
-      'title': 'Bar chart on whether or not people have met me before!',
-      'width':400,
-      'height':300,
-      animation: {"startup": true}
-    };
+      //for the size of the chart
+      const options = {
+        'title': 'Bar chart on whether or not people have met me before!',
+        'width': 400,
+        'height': 300,
+        animation: { "startup": true }
+      };
 
-    //printing the chart out to the container 
-    const chart = new google.visualization.ColumnChart(
+      //printing the chart out to the container 
+      const chart = new google.visualization.ColumnChart(
         document.getElementById('chart-container'));
-    chart.draw(dataMyles, options);
-  });
+      chart.draw(dataMyles, options);
+    });
 }
- 
+
 //Prints out the number of comments that the user specifies
 function numComments(commentsNum) {
   fetch('/data?viewComments=' + commentsNum).then(response => response.json()).then((comments) => {
     const taskListElement = document.getElementById('task-list');
-    taskListElement.innerHTML="";
-    for (let i = 0; i < commentsNum; i++)
-    {
-        taskListElement.appendChild(createTaskElement(comments));
-    }    
+    taskListElement.innerHTML = "";
+    for (let i = 0; i < commentsNum; i++) {
+      taskListElement.appendChild(createTaskElement(comments));
+    }
   });
 }
 
@@ -117,5 +118,5 @@ function createTaskElement(task) {
 function deleteTask(task) {
   const params = new URLSearchParams();
   params.append('id', task.id);
-  fetch('/DataDelete', {method: 'POST', body: params});
+  fetch('/DataDelete', { method: 'POST', body: params });
 }
