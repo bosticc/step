@@ -1,9 +1,149 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: max-content;
 }
 
 #greeting-container {
   margin-top: 20px;
 }
+
+body {
+  background-color: #cccccc;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+p {
+  color: black;
+}
+
+h1 {
+  color: black;
+}
+
+h2 {
+  color: black;
+  font-family:Helvetica;
+}
+
+li a {
+display: block;
+color : purple ;
+padding: 4px 16px;
+text-decoration: none;
+position: relative;
+white-space:nowrap;
+padding-left: 5px;
+padding-right:5px;
+}
+
+li a:hover {
+background-color: yellow;
+color: purple;
+}
+
+ul {
+padding: 0;
+margin: 0;
+width: 200px;
+}
+
+/* Layout for buttons */
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-github {
+  background: #c9510c;
+  color: white;
+}
+
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+body{
+    position: relative;
+}
+
+/* parallax images (all below) */
+.howard-image {
+  /* The image used */
+  background-image: url('Images/Howard.png');
+
+  /* Set a specific height */
+  min-height: 200px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-color:black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.akatsuki-parallax {
+  /* The image used */
+  background-image: url('Images/akatsuki.png');
+
+  /* Set a specific height */
+  min-height: 300px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:white;
+}
+
+.kobe-parallax {
+  /* The image used */
+  background-image: url('Images/kobenfam.jpg');
+
+  /* Set a specific height */
+  min-height: 300px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:white;
+}
+
+/*styling for the top container*/
+.container-pt-3 {
+    padding-top:70px;
+    padding-left:20px;
+    padding-bottom:20px;
+    background-color: white;
+}
+
+/*styling for all the containers except for the top one*/
+.container-fluid {
+    padding-bottom:70px;
+    padding-top:20px;
+    padding-left:20px;
+}
+
+/* Layout inspired from w3schools! */
