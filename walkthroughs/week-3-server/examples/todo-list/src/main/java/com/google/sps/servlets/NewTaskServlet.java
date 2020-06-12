@@ -41,4 +41,5 @@ public class NewTaskServlet extends HttpServlet {
 
     response.sendRedirect("/index.html");
   }
+  
 }

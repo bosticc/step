@@ -87,7 +87,7 @@ If you'd like Git to store the username/password for pushing to GitHub, change t
 ```bash
 git config credential.helper store
 ```
-onf
+
 You should now see this code in your repo on GitHub!
 
 ## Add Collaborators
