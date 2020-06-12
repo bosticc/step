@@ -35,16 +35,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/met-Myles")
 public class metMylesServlet extends HttpServlet {
 
-  public Map<String, Integer> metVotes = new HashMap<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Votes").addSort("timestamp", SortDirection.DESCENDING);
 
-    //Makes a new datastore object and intializes it with the comment
+    //Makes a new datastore object and intializes it with the vote
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
-    
+
+    Map<String, Integer> metVotes = new HashMap<>();
+
+    for (Entity entity: results.asIterable()) {
+        String key = (String) entity.getProperty("title");
+        int currentVotes = metVotes.containsKey(key) ? metVotes.get(key) : 0;
+        metVotes.put(key, currentVotes + 1);
+    }
+
     //prints out to chart container
     response.setContentType("application/json");
     Gson gson = new Gson();
@@ -55,8 +62,6 @@ public class metMylesServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String metMyles = request.getParameter("metMyles");
-    int currentVotes = metVotes.containsKey(metMyles) ? metVotes.get(metMyles) : 0;
-    metVotes.put(metMyles, currentVotes + 1);
 
     //storing objects in the datastore entity 
     long timestamp = System.currentTimeMillis();
