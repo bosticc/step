@@ -40,7 +40,7 @@ public class metMylesServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Votes").addSort("timestamp", SortDirection.DESCENDING);
 
-    //Makes a new datastore object and intializes it with the vote
+    // Makes a new datastore object and intializes it with the vote
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
@@ -52,7 +52,7 @@ public class metMylesServlet extends HttpServlet {
         metVotes.put(key, currentVotes + 1);
     }
 
-    //prints out to chart container
+    // Converts response to json
     response.setContentType("application/json");
     Gson gson = new Gson();
     String json = gson.toJson(metVotes);
@@ -63,14 +63,14 @@ public class metMylesServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String metMyles = request.getParameter("metMyles");
 
-    //storing objects in the datastore entity 
+    // storing objects in the datastore entity 
     long timestamp = System.currentTimeMillis();
     Entity taskEntity = new Entity("Votes");
     taskEntity.setProperty("title", metMyles);
     taskEntity.setProperty("timestamp", timestamp); 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
-    //sends the user back to the chart
+    // sends the user back to the chart
     response.sendRedirect("/index.html#chart-container");
   }
   

@@ -23,12 +23,12 @@ public class DataServlet extends HttpServlet {
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
 
-    //Makes a new datastore object and intializes it with the comment
+    // Makes a new datastore object and intializes it with the comment
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
     
-    //creates a new array for all the comments
+    // creates a new array for all the comments
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();

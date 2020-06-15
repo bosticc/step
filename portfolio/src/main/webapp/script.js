@@ -53,7 +53,7 @@ function drawChart() {
       dataMyles.addRow([metMyles, metVotes[metMyles]]);
     });
 
-    //for the size of the chart
+    // for the size of the chart
     const options = {
       'title': 'Bar chart on whether or not people have met me before!',
       'width':400,
