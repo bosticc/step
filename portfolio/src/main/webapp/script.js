@@ -28,8 +28,7 @@ function createTaskElement(comment) {
   const titleElement = document.createElement('span');
   titleElement.innerText = comment.title;
 
-<<<<<<< HEAD
-
+}
  
 // Copyright 2019 Google LLC
 //
@@ -54,7 +53,7 @@ function numComments(commentsNum) {
         taskListElement.appendChild(createTaskElement(comments));
     }    
   });
-=======
+
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
   deleteButtonElement.addEventListener('click', () => {
@@ -67,7 +66,6 @@ function numComments(commentsNum) {
   taskElement.appendChild(titleElement);
   taskElement.appendChild(deleteButtonElement);
   return taskElement;
->>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 
