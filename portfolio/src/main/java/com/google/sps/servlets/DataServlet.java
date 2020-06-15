@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -19,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+<<<<<<< HEAD
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
@@ -29,6 +35,14 @@ public class DataServlet extends HttpServlet {
 
     
     //creates a new array for all the comments
+=======
+   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
@@ -37,6 +51,7 @@ public class DataServlet extends HttpServlet {
       Comment comment = new Comment(id, title, timestamp);
       comments.add(comment);
     }
+<<<<<<< HEAD
     /**prints all the comments back to the holder in 
     html
     */
@@ -44,12 +59,24 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
     }
+=======
+
+    Gson gson = new Gson();
+
+    response.setContentType("application/json;");
+    response.getWriter().println(gson.toJson(comments));
+  }
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 
 
   @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String title = request.getParameter("title");
         long timestamp = System.currentTimeMillis();
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
         Entity taskEntity = new Entity("Comment");
         taskEntity.setProperty("title", title);
         taskEntity.setProperty("timestamp", timestamp); 
@@ -59,6 +86,12 @@ public class DataServlet extends HttpServlet {
    }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
   /**
    * @return the request parameter, or the default value if the parameter
    *         was not specified by the client
@@ -66,7 +99,11 @@ public class DataServlet extends HttpServlet {
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
     if (value == null) {
+<<<<<<< HEAD
       return null;
+=======
+      return defaultValue;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
     }
     return value;
   }

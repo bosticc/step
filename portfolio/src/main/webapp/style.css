@@ -24,6 +24,7 @@ h1 {
 
 h2 {
   color: black;
+<<<<<<< HEAD
   font-family:Helvetica;
 }
 
@@ -47,6 +48,31 @@ ul {
 padding: 0;
 margin: 0;
 width: 200px;
+=======
+  font-family: Helvetica;
+}
+
+li a {
+  display: block;
+  color: purple;
+  padding: 4px 16px;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+li a:hover {
+  background-color: yellow;
+  color: purple;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  width: 200px;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 /* Layout for buttons */
@@ -61,7 +87,11 @@ width: 200px;
 }
 
 .fa:hover {
+<<<<<<< HEAD
     opacity: 0.7;
+=======
+  opacity: 0.7;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 .fa-linkedin {
@@ -81,13 +111,19 @@ width: 200px;
 }
 
 
+<<<<<<< HEAD
 body{
     position: relative;
+=======
+body {
+  position: relative;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 /* parallax images (all below) */
 .howard-image {
   /* The image used */
+<<<<<<< HEAD
   background-image: url('Images/howard.png');
 
   /* Set a specific height */
@@ -96,6 +132,16 @@ body{
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-color:black;
+=======
+  background-image: url('Images/Howard.png');
+
+  /* Set a specific height */
+  min-height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-color: black;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -106,14 +152,22 @@ body{
   background-image: url('Images/akatsuki.png');
 
   /* Set a specific height */
+<<<<<<< HEAD
   min-height: 300px; 
+=======
+  min-height: 300px;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+<<<<<<< HEAD
   background-color:white;
+=======
+  background-color: white;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 .kobe-parallax {
@@ -121,29 +175,50 @@ body{
   background-image: url('Images/kobenfam.jpg');
 
   /* Set a specific height */
+<<<<<<< HEAD
   min-height: 300px; 
+=======
+  min-height: 300px;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+<<<<<<< HEAD
   background-color:white;
+=======
+  background-color: white;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 /*styling for the top container*/
 .container-pt-3 {
+<<<<<<< HEAD
     padding-top:70px;
     padding-left:20px;
     padding-bottom:20px;
     background-color: white;
+=======
+  padding-top: 70px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 /*styling for all the containers except for the top one*/
 .container-fluid {
+<<<<<<< HEAD
     padding-bottom:70px;
     padding-top:20px;
     padding-left:20px;
+=======
+  padding-bottom: 70px;
+  padding-top: 20px;
+  padding-left: 20px;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 /* Layout inspired from w3schools! */

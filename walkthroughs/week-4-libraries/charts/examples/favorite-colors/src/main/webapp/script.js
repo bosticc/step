@@ -17,7 +17,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 /** Fetches color data and uses it to create a chart. */
 function drawChart() {
-  fetch('/color-data').then(response => response.json())
+  fetch('color-data').then(response => response.json())
   .then((colorVotes) => {
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Color');

@@ -11,7 +11,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+function loadTasks() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const taskListElement = document.getElementById('task-list');
+    comments.forEach((comment) => {
+      taskListElement.appendChild(createTaskElement(comment));
+    })
+  });
+}
 
+/** Creates an element that represents a task, including its delete button. */
+function createTaskElement(comment) {
+  const taskElement = document.createElement('li');
+  taskElement.className = 'comment';
+
+  const titleElement = document.createElement('span');
+  titleElement.innerText = comment.title;
+
+<<<<<<< HEAD
 
  
 // Copyright 2019 Google LLC
@@ -37,6 +54,20 @@ function numComments(commentsNum) {
         taskListElement.appendChild(createTaskElement(comments));
     }    
   });
+=======
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.addEventListener('click', () => {
+    deleteTask(comment);
+
+    // Remove the task from the DOM.
+    taskElement.remove();
+  });
+
+  taskElement.appendChild(titleElement);
+  taskElement.appendChild(deleteButtonElement);
+  return taskElement;
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
 }
 
 

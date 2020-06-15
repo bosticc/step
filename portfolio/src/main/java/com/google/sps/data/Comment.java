@@ -26,4 +26,8 @@ public final class Comment {
     this.title = title;
     this.timestamp = timestamp;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e9655925b1c5f3ce6993495b8bbe7ab4c88e3930
