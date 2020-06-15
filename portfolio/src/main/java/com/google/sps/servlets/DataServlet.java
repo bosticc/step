@@ -38,17 +38,20 @@ public class DataServlet extends HttpServlet {
       comments.add(comment);
     }
     /** prints all the comments back to the holder in html
+
     */
     Gson gson = new Gson();
+
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
-    }
+  }
 
 
   @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String title = request.getParameter("title");
         long timestamp = System.currentTimeMillis();
+
         Entity taskEntity = new Entity("Comment");
         taskEntity.setProperty("title", title);
         taskEntity.setProperty("timestamp", timestamp); 

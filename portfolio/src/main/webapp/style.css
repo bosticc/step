@@ -47,6 +47,29 @@ ul {
 padding: 0;
 margin: 0;
 width: 200px;
+font-family: Helvetica;
+}
+
+li a {
+  display: block;
+  color: purple;
+  padding: 4px 16px;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+li a:hover {
+  background-color: yellow;
+  color: purple;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  width: 200px;
 }
 
 /* Layout for buttons */
@@ -61,7 +84,7 @@ width: 200px;
 }
 
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .fa-linkedin {
@@ -88,14 +111,16 @@ body{
 /* parallax images (all below) */
 .howard-image {
   /* The image used */
-  background-image: url('Images/howard.png');
+
+
+  background-image: url('Images/Howard.png');
 
   /* Set a specific height */
-  min-height: 200px; 
+  min-height: 200px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
-  background-color:black;
+  background-color: black;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -106,7 +131,8 @@ body{
   background-image: url('Images/akatsuki.png');
 
   /* Set a specific height */
-  min-height: 300px; 
+
+  min-height: 300px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -121,29 +147,28 @@ body{
   background-image: url('Images/kobenfam.jpg');
 
   /* Set a specific height */
-  min-height: 300px; 
-
+  min-height: 300px;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color:white;
+  background-color: white;
 }
 
 /*styling for the top container*/
 .container-pt-3 {
-    padding-top:70px;
-    padding-left:20px;
-    padding-bottom:20px;
-    background-color: white;
+  padding-top: 70px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  background-color: white;
 }
 
 /*styling for all the containers except for the top one*/
 .container-fluid {
-    padding-bottom:70px;
-    padding-top:20px;
-    padding-left:20px;
+  padding-bottom: 70px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 /* Layout inspired from w3schools! */
