@@ -24,7 +24,30 @@ h1 {
 
 h2 {
   color: black;
-  font-family: Helvetica;
+  font-family:Helvetica;
+}
+
+li a {
+display: block;
+color : purple ;
+padding: 4px 16px;
+text-decoration: none;
+position: relative;
+white-space:nowrap;
+padding-left: 5px;
+padding-right:5px;
+}
+
+li a:hover {
+background-color: yellow;
+color: purple;
+}
+
+ul {
+padding: 0;
+margin: 0;
+width: 200px;
+font-family: Helvetica;
 }
 
 li a {
@@ -81,13 +104,15 @@ ul {
 }
 
 
-body {
-  position: relative;
+body{
+    position: relative;
 }
 
 /* parallax images (all below) */
 .howard-image {
   /* The image used */
+
+
   background-image: url('Images/Howard.png');
 
   /* Set a specific height */
@@ -106,6 +131,7 @@ body {
   background-image: url('Images/akatsuki.png');
 
   /* Set a specific height */
+
   min-height: 300px;
 
   /* Create the parallax scrolling effect */
@@ -113,7 +139,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: white;
+  background-color:white;
 }
 
 .kobe-parallax {
@@ -122,7 +148,6 @@ body {
 
   /* Set a specific height */
   min-height: 300px;
-
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;

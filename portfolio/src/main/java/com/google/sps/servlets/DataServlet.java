@@ -1,5 +1,3 @@
-
-
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -17,16 +15,20 @@ import com.google.sps.data.Comment;
 import com.google.gson.Gson;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+   @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
 
+    //Makes a new datastore object and intializes it with the comment
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
+    
+    //creates a new array for all the comments
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
@@ -35,19 +37,19 @@ public class DataServlet extends HttpServlet {
       Comment comment = new Comment(id, title, timestamp);
       comments.add(comment);
     }
-
+    /**prints all the comments back to the holder in 
+    html
+    */
     Gson gson = new Gson();
-
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
-  }
+    }
 
 
   @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String title = request.getParameter("title");
         long timestamp = System.currentTimeMillis();
-
         Entity taskEntity = new Entity("Comment");
         taskEntity.setProperty("title", title);
         taskEntity.setProperty("timestamp", timestamp); 
@@ -57,18 +59,14 @@ public class DataServlet extends HttpServlet {
    }
 
 
-
-
-
   /**
    * @return the request parameter, or the default value if the parameter
    *         was not specified by the client
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
-    if (value == null) {
-      return defaultValue;
-    }
+    
     return value;
   }
+
 }
