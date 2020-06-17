@@ -44,6 +44,6 @@ public final class FindMeetingQuery {
             } 
         }
     return goodTimes;
-  }
+      }
   // maps of all the times 
 }
