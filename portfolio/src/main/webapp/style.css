@@ -111,9 +111,8 @@ body{
 /* parallax images (all below) */
 .howard-image {
   /* The image used */
+  background-image: url('Images/howard.png');
 
-
-  background-image: url('Images/Howard.png');
 
   /* Set a specific height */
   min-height: 200px;
@@ -171,4 +170,12 @@ body{
   padding-left: 20px;
 }
 
+#map {
+    height: 500px;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 /* Layout inspired from w3schools! */

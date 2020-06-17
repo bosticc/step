@@ -37,8 +37,7 @@ public class DataServlet extends HttpServlet {
       Comment comment = new Comment(id, title, timestamp);
       comments.add(comment);
     }
-    /**prints all the comments back to the holder in 
-    html
+    /** prints all the comments back to the holder in html
     */
     Gson gson = new Gson();
     response.setContentType("application/json;");
@@ -65,7 +64,6 @@ public class DataServlet extends HttpServlet {
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
-    
     return value;
   }
 

@@ -16,36 +16,37 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script 
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
+   <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3MIdHeG54jeXfemqIAzHy2rqmx7deubk&callback=initMap"type="text/javascript"></script>
 
+  <link rel="stylesheet" href="style.css">
 </head>
   <!-- Navbar -->
-  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="numComments(3)">
+  <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="numComments(3)" onload="initMap()" >
   <nav class="navbar navbar-expand-sm bg-dark 
       navbar-dark justify-content-center fixed-top">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a href="#about-me">About me</a>
-    </li>
-    <li class="nav-item">
-      <a href="#important-links" >
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#about-me">About me</a>
+      </li>
+      <li class="nav-item">
+        <a href="#important-links">
           Important Links</a>
     </li>
     <li class="nav-item">
       <a href="#interests">Interests</a>
+    </li>
+    <li class="nav-item">
+      <a href="#chart-container">Take my poll!</a>
     </li>
   </ul>
   <span class="navbar-text"</span>
   </nav>
   <br>
   <!-- First container, this is the welcome section -->
-  <div class="container-pt-3" >
+  <div class="container-pt-3">
     <h1>Welcome!</h1>
     <h2>Hi, my name is Myles, and I am currently a rising sophomore at
       <a href= "https://home.howard.edu/"> Howard University</a> in D.C.</h2>
@@ -70,7 +71,7 @@
       <p>PS4, my dog, anime, basketball, netflix, CS. 
           I'm a pretty simple dude. I go to Howard (shoutout my Drew Kings!)</p>
     </div>
-      <div class="howard-image"></div>
+    <div class="howard-image"></div>
     <!-- Interests section -->
     <div id="interests" class="container-fluid bg-light" >
       <h1>Interests</h1>
@@ -87,76 +88,11 @@
               </dd>
           </dl>
     </div>
+        <div id="chart_div" class="container-fluid bg-danger"> 
+        </div>
         <!-- akatsuki parallax -->
         <div class="akatsuki-parallax"></div>
         <!-- important links, w/ social media buttons. akatsuki parallax 
-            also after this div-->
-        <div id="important-links" class="container-fluid bg-danger">
-    <h1> Important links</h1>
-        <h2> Here are some links about myself:</h2>
-          <a href="https://instagram.com/bosticc" class="fa fa-instagram"></a>
-          <a href="https://www.linkedin.com/in/myles-b-b7623aaa/"
-              class="fa fa-linkedin"></a>
-<!-- Navbar -->
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="loadTasks()">
-  <nav class="navbar navbar-expand-sm bg-dark 
-      navbar-dark justify-content-center fixed-top">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a href="#about-me">About me</a>
-      </li>
-      <li class="nav-item">
-        <a href="#important-links">
-          Important Links</a>
-      </li>
-      <li class="nav-item">
-        <a href="#interests">Interests</a>
-      </li>
-    </ul>
-    <span class="navbar-text"></span>
-  </nav>
-  <br>
-  <!-- First container, this is the welcome section -->
-  <div class="container-pt-3">
-    <h1>Welcome!</h1>
-    <h2>Hi, my name is Myles, and I am currently a rising sophomore at
-      <a href="https://home.howard.edu/"> Howard University</a> in D.C.</h2>
-    <form method="POST" action="/data">
-      <input type="text" name="title" />
-      <br />
-      <button>Submit</button>
-    </form>
-    <hr />
-    <ul id="task-list"></ul>
-  </div>
-  <!-- Parallax effect with howard image, also seen after
-      this div-->
-  <div class="howard-image"></div>
-  <div id="about-me" class="container-fluid bg-success">
-    <h1> This is a section about me.</h1>
-    <p>PS4, my dog, anime, basketball, netflix, CS.
-      I'm a pretty simple dude. I go to Howard (shoutout my Drew Kings!)</p>
-  </div>
-  <div class="howard-image"></div>
-  <!-- Interests section -->
-  <div id="interests" class="container-fluid bg-light">
-    <h1>Interests</h1>
-    <h2> These are some interests that I have</h2>
-    <dl>
-      <dt>Naruto</dt>
-      <dd>Definitely one of my favorite shows I've ever seen. Jawn is hard.</dd>
-      <dt>2K</dt>
-      <dd>As much as I hate to say it, I do like 2K. Needs work, but it's
-        a fun game to play. <a href="https://my.playstation.com/profile/bosticc"> Find my psn here </a>. </dd>
-      <dt>HunterXHunter</dt>
-      <dd>I really like this show too.. I need them to put
-        the rest of it on Hulu tho!!
-      </dd>
-    </dl>
-  </div>
-  <!-- akatsuki parallax -->
-  <div class="akatsuki-parallax"></div>
-  <!-- important links, w/ social media buttons. akatsuki parallax 
             also after this div-->
   <div id="important-links" class="container-fluid bg-danger">
     <h1> Important links</h1>
@@ -166,19 +102,22 @@
   </div>
   <div class="akatsuki-parallax"></div>
   <!-- !TODO add some stuff to this section -->
-  <div id="section4" class="container-fluid  bg-dark">
-    <h1>I don't know what's gonna be here yet!</h1>
-      <button type="button" class="btn">Basic</button>
+  <div id="chart-container" class="container-fluid  bg-dark"></div>
+  <div id="met-Myles" class="container-fluid  bg-dark">
+  <!-- Made a section to survey if people have met me -->
+    <h1>Participate in my survey</h1>
+    <form action="/met-Myles" method="POST">
+      <select name="metMyles">
+        <option value="I have met Myles before!">Met Myles</option>
+        <option value="I haven't met Myles yet, but I hope to!">I have not met Myles</option>
+      </select>
+      <button>Submit</button>
+    </form>  
   </div>
   <!-- Kobe parallax -->
-  <div class="kobe-parallax">
-  </div>
-  <!-- !TODO add some stuff to this section -->
-  <div id="section5" class="container-fluid">
-    <h1>I still don't know! I like the lakers
-        if u couldn't tell by now tho.. :)
-    </h1>
-  </div>
+  <div class="kobe-parallax"></div>
+  <div id="map"></div>
+  <p>Checkout Maplewood, NJ my hometown!</p>
   </body>
 </html>
 <!-- Layout from w3schools!-->
