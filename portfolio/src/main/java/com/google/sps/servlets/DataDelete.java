@@ -37,4 +37,3 @@ public class DataDelete extends HttpServlet {
     datastore.delete(taskEntityKey);
   }
 }
-
