@@ -16,14 +16,20 @@
 
 package com.google.sps;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import static java.lang.Math.toIntExact;
 
 
 public final class FindMeetingQuery {
 
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {    
-    // not sure why this works!! but I have to cast the request 
+    // Not sure why this works!! but I have to cast the request 
     //of attendees as an int 
     Collection<String> attendeesCollection = request.getAttendees();
     Collection<String> optionalAttendeesCollection = request.getOptionalAttendees();
@@ -31,51 +37,46 @@ public final class FindMeetingQuery {
     List<TimeRange> badTimes = new ArrayList<TimeRange>();
     List<TimeRange> goodTimes = new ArrayList<TimeRange>();
 
-    // get the duration of the event, haven't implemented yet
-    long durationLong = request.getDuration();
-    int duration = (int) durationLong;
-
-    if(duration >= TimeRange.WHOLE_DAY.duration())
+    // Get the duration of the event, haven't implemented yet
+    // This long to int conversion is safe because the duration 
+    //(in hours) can never be larger than 2^32 in practice
+    int duration = (int) request.getDuration();
+    if (duration >= TimeRange.WHOLE_DAY.duration())
     {
         return Arrays.asList();
     }
 
     Set<String> participants = new HashSet<String>();
-    if(!(request.getOptionalAttendees().isEmpty()))
+    if (!request.getOptionalAttendees().isEmpty())
     {   
-        for(String attendee: optionalAttendeesCollection)
+        for (String attendee : optionalAttendeesCollection)
         {
             participants.add(attendee);
         }
     }
 
-    for(String attendee: attendeesCollection)
+    for (String attendee : attendeesCollection)
     {
         participants.add(attendee);
     }
 
-
-
-    // before you go any further, I have really bad runtime on here!
-    // sorry! :(
-    //getting each attendee
-
-    for(Event thisMeeting: events) {
-        // get the attendees for this meeting (all meeting participants)
+    // Getting each attendee
+    for (Event thisMeeting : events) {
+        // Get the attendees for this meeting (all meeting participants)
         Set<String> amp = new HashSet<String>(thisMeeting.getAttendees());
-        // for every attendee in this meeting
-        for(String participant1: amp)
+        // For every attendee in this meeting
+        for (String participant1 : amp)
         {
-            // for every attendee in the meeting we want
-            for(String participant: participants)
+            // For every attendee in the meeting we want
+            for (String participant : participants)
             {
-                // if the participant is in this meeting, add it 
+                // If the participant is in this meeting, add it 
                 // to the bad times we collect
-                if(participant == participant1)
+                if (participant == participant1)
                 {
-                    // if there is a participant who has a meeting that's the whole day,
+                    // If there is a participant who has a meeting that's the whole day,
                     // then there will be no good meeting times 
-                    if((thisMeeting.getWhen().equals(TimeRange.WHOLE_DAY)))
+                    if (thisMeeting.getWhen().equals(TimeRange.WHOLE_DAY))
                     {
                         return Arrays.asList();
                     }
@@ -85,56 +86,52 @@ public final class FindMeetingQuery {
         }
     }
 
-    //if there are no bad times, return the whole day
-    if(badTimes.size() == 0)
+    // If there are no bad times, return the whole day
+    if (badTimes.size() == 0)
     {
         return Arrays.asList(TimeRange.WHOLE_DAY);
     }
 
-    // if there's one event, schedule good times 
-    // before and after
-    if(badTimes.size() == 1)
+    // If there's one event, schedule good times before and after
+    if (badTimes.size() == 1)
     {
         goodTimes.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, badTimes.get(0).start(), false));
         goodTimes.add(TimeRange.fromStartEnd(badTimes.get(0).end(), TimeRange.END_OF_DAY, true));
         return goodTimes;
     }
 
-    //sort all  meeting (bad) times after we collect them
+    // Sort all  meeting (bad) times after we collect them
     Collections.sort(badTimes, TimeRange.ORDER_BY_START);
 
-    // if we can fit a meeting in before the beginning of the first one
+    // If we can fit a meeting in before the beginning of the first one
     // schedule it 
-    if(Math.abs(TimeRange.START_OF_DAY - badTimes.get(0).start()) > duration)
+    if (Math.abs(TimeRange.START_OF_DAY - badTimes.get(0).start()) > duration)
     {
         goodTimes.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, badTimes.get(0).start(), false));
     }
-    
-    /*thought this variable name  was kinda funny!! 
-    *im sure it's prolly too long but 
-    * wanted to keep it :)
-    */
+
+    // Get the end of the badTimes array
     int endOfBadTimes = badTimes.size() - 1;
 
-    for(int i = 0; i < badTimes.size() - 1; i++)
+    for (int i = 0; i < badTimes.size() - 1; i++)
     {
-        // if the meeting contains the next one, then just schedule before and after
-        if(badTimes.get(i).contains(badTimes.get(i+1)) && i == 0)
+        // If the meeting contains the next one, then just schedule before and after
+        if (badTimes.get(i).contains(badTimes.get(i+1)) && i == 0)
         {
             goodTimes.add(TimeRange.fromStartEnd(badTimes.get(0).end(), TimeRange.END_OF_DAY, true));
             return goodTimes;
         }
-        // if there's time between the next meeting and the one right now, 
+        // If there's time between the next meeting and the one right now, 
         //schedule
-        if((badTimes.get(i+1).start() >= badTimes.get(i).end() &&
-        duration <= Math.abs(badTimes.get(i+1).start() - badTimes.get(i).end()))) 
+        if ((badTimes.get(i+1).start() >= badTimes.get(i).end() &&
+            duration <= Math.abs(badTimes.get(i+1).start() - badTimes.get(i).end()))) 
         {
             goodTimes.add(TimeRange.fromStartEnd(badTimes.get(i).end(), badTimes.get(i+1).start(), false));
         } 
     }
-    // if you're the end of all the meetings, and there's time
+    // If you're the end of all the meetings, and there's time
     // before the end of the day, add a meeting
-    if((Math.abs(TimeRange.END_OF_DAY - badTimes.get(endOfBadTimes).end()) > duration))
+    if ((Math.abs(TimeRange.END_OF_DAY - badTimes.get(endOfBadTimes).end()) > duration))
     {
         goodTimes.add(TimeRange.fromStartEnd(badTimes.get(endOfBadTimes).end(), TimeRange.END_OF_DAY, true));
     }
